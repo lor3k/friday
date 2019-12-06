@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Friday</title>
+
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js"
+          crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
+          crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    div {
+      font: 20px monospace;
+      margin: 20px;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    class Foo extends React.Component {
+      constructor(props) {
+        super(props);
+      };
+
+      state = {
+        content: ['red', 'green', 'blue'],
+        id: '12345',
+        accepted: false
+      };
+
+      confirm(message) {
+        const accepted = window.confirm(`Did you accept ${message} ?`);
+        this.setState(state => ({ ...state, accepted }));
+        console.log(this.props.bar);
+      }
+
+      render() {
+        return (
+          <div>
+            <h1>{this.state.accepted ? 'Confirmed' : 'Not confirmed'}</h1>
+            {this.state.content.map(text => (
+              <div
+                style={{ color: text }}
+                key={text}
+                onClick={() => { this.confirm(text) }}
+              >
+                {`${text} ${this.state.id}`}
+              </div>
+            ))}
+          </div>
+        )
+      }
+    };
+
+    ReactDOM.render(
+      <Foo bar="sample" />,
+      document.getElementById('root')
+    );
+
+  </script>
+
+</body>
+
+</html>
