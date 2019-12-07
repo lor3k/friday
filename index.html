@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+  <style>
+    body {
+      background: lightgrey;
+      padding: 50px;
+    }
+
+    #main {
+      width: 250px;
+      height: 75px;
+      color: white;
+      background: brown;
+      border-radius: 20px;
+      font: 26px monospace;
+      text-align: center;
+      line-height: 75px;
+      cursor: pointer;
+      transition: 0.5s;
+      user-select: none;
+    }
+
+    #main:hover {
+      color: lightyellow;
+      background-color: darkslateblue;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div id="main"
+       oncontextmenu="event.preventDefault(); alert('clicked')">
+    right click
+  </div>
+
+</body>
+
+</html>
